@@ -3,8 +3,5 @@
 #ExecSearchPath=/usr/local/bin/usr/bin:/bin:%h/.local/bin
 ExecStart=%h/.local/bin/nag2al-wrapper
 
-# Backup the .timelog file.
-# Almost certainly pointless now that it is on ZFS.
 Type=oneshot
-ExecStart=chronic ci -l "-mDaily commit." .timelog
 WorkingDirectory=%h

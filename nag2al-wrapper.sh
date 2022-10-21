@@ -8,7 +8,7 @@ PATH="$PATH:$HOME/.local/bin"   # YUK.
 {
 
     # Get all events with yesterday's timestamp.
-    if ! grep "^$(date -I -dyesterday)" ~/.timelog
+    git --git-dir "$HOME/.nag.git/" show master:timelog | if ! grep "^$(date -I -dyesterday)"
     then echo "There were no nag logs yesterday" >&2
     fi |
 
