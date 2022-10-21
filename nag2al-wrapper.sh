@@ -12,10 +12,11 @@ PATH="$PATH:$HOME/.local/bin"   # YUK.
     then echo "There were no nag logs yesterday" >&2
     fi |
 
-    # Add a fake timestamp to the bottom.
-    # This might make nag2al create a timestamp entry if I forget to clock out?
-    # I do not remember exactly why this is here, and the old cron job didn't say.
-    awk '{print}END{print $1, $2, "23321 dummy time event to hopefully cause the previous real event to actually get logged into alloc"}' |
+    # I didn't have this in mine, and mine actually tries to submit this line item -- Mike, 2022-10-21
+    # # Add a fake timestamp to the bottom.
+    # # This might make nag2al create a timestamp entry if I forget to clock out?
+    # # I do not remember exactly why this is here, and the old cron job didn't say.
+    # # awk '{print}END{print $1, $2, "23321 dummy time event to hopefully cause the previous real event to actually get logged into alloc"}' |
 
     # Do the nag2al stuff.
     nag2al
@@ -26,4 +27,4 @@ PATH="$PATH:$HOME/.local/bin"   # YUK.
 # which ends up in logcheck@ emails,
 # send me an email instead.
 # FIXME: This is deeply shitty.
-mail -s "nag2al output" "$USER"
+mail -s "Nag2al $(date --rfc-3339=date)" "$USER"
