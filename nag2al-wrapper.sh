@@ -19,7 +19,7 @@ PATH="$PATH:$HOME/.local/bin"   # YUK.
     # # awk '{print}END{print $1, $2, "23321 dummy time event to hopefully cause the previous real event to actually get logged into alloc"}' |
 
     # Do the nag2al stuff.
-    nag2al
+    nag2al -v
 
 } |&
 
