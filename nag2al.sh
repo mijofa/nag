@@ -1,11 +1,11 @@
 #!/bin/bash -eEu
 trap 'echo >&2 "$0: unknown error"' ERR
 
-maybe_dry_run(){ printf "%s %s %s %s %s %q\n" "$@";}
+maybe_dry_run(){ printf "# %s %s %s %s %s %q\n" "$@";}
 non_tasks_only=0
 while getopts "nfvi" opt
 do  case "$opt" in
-        n) maybe_dry_run(){ printf "%s %s %s %s %s %q\n" "$@";};;
+        n) maybe_dry_run(){ printf "# %s %s %s %s %s %q\n" "$@";};;
         f) maybe_dry_run(){ "$@";};;
         v) maybe_dry_run(){ printf "%s %s %s %s %s %q\n" "$@"; "$@";};;
         i) non_tasks_only=1;;
